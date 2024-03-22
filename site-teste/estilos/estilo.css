@@ -1,0 +1,60 @@
+li {
+    color: red;
+    width: 500px;
+    border: 1px solid black;
+  }
+
+  p, li, h1 {
+    color:red
+  }
+
+  #meu-id {
+    background-color: black;
+  }
+
+  .minha-class{
+    background-color: darkgrey;
+  }
+
+  .fundo-vermelho{
+    background-color: red;
+    color:black
+  }
+
+  .fundo-vermelho:hover {
+    background-color: black;
+    color:red
+  }
+
+  html{
+    font-size: 19px;
+    font-family: "Marcellus SC", serif; ;
+    background-color: gray;
+  }
+
+  h1{
+    font-size: 40px;
+    text-align: center;
+    text-shadow: 3px 3px 1px #16bb10;
+  }
+
+  p,li {
+    font-size: 16px;
+    line-height: 1;
+    letter-spacing: 1px;    
+    padding: 3px;
+    margin: 3px:
+
+  }
+  
+  body{
+    width: 600px;
+    margin: 0 auto;
+    background-color: #a55559;
+    padding: 20px 20px 20px;
+    border: 5px solid black;
+  }
+img{
+    display: block;
+    margin: 0 auto;
+}
