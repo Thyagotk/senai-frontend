@@ -14,6 +14,7 @@
 html {
     font-size: 62.5%;
     overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
 .content{
@@ -182,44 +183,153 @@ html {
     justify-content: center;
 }
 
+/* secction cardapio */
 .cardapio{
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-image: linear-gradient(rgba(12,12,12,0.8),rgba(15,15,15,0.8)), url(../imagens/cozinha.jpg);
+    background-image: linear-gradient(rgba(12, 12, 12, 0.7),rgba(15, 15, 15, 0.7)), url(../imagens/cardapio.jpg);
     background-size: cover;
     background-position: center center;
-    background-repeat:  no-repeat;
-
+    background-repeat: no-repeat;
 }
 
 .cardapio h2{
     font-size: 5rem;
-    color : white;
+    color: #e6e6e6;
     text-transform: uppercase;
-
+    margin-top: 2rem;
 }
 
-.itens-cardapio{
-    width:  80%;
+.itens-cardapio {
+    width: 80%;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px,550px));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 450px));
     justify-content: center;
     align-items: center;
     gap: 30px;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
 }
-.itens-cardapio img{
-width:  100%;
-height: 200px;
 
+.itens-cardapio img{
+    width: 100%;
+    height: 200px;
 }
 
 .itens-cardapio div{
-    background-color: #756767;
-    box-shadow:  0px 0px 4px 1px;
-    
+    background-color: #5e5252;
+    box-shadow: 0px 0px 4px 1px;
+}
+
+.itens-cardapio .info {
+    background-color: rgb(221, 221, 221);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    flex-direction: column;
+}
+
+.itens-cardapio .info h3{
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    text-decoration: underline;
+    margin-bottom: 1rem;
+}
+
+.itens-cardapio .info h4{
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: 150px 150px;
+    margin-left: 6rem;
+}
+
+.itens-cardapio .info h4 span{
+    color: #5e5252;
+    margin-left: 1.5rem;
+    text-decoration: underline;
+    font-weight: 800;
+}
+
+.itens-cardapio .info button{
+    width: 200px;
+    height: 30px;
+    background-color: #ffc506;
+    cursor: pointer;
+    border-radius: 5px;
+    text-transform: uppercase;
+    margin-top: 0.5rem;
+    transition: all 200ms ease-in;
+}
+
+.itens-cardapio .info button:hover{
+    background-color: #5e5252;
+    color: #ffffff;
+}
+
+/* section contatos */
+
+.contatos{
+    width: 100%;
+    background-color: #1f1e1f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+    font-size: 1.8rem;
+    padding-bottom: 4rem;
+}
+
+.contatos h3{
+    font-size: 6rem;
+    margin-bottom: 3rem;
+    font-family: 'Indie Flower', cursive;
+}
+
+.contatos .contatos-secao{
+    display: flex;
+    width: 650px;
+    justify-content: space-between;
+    font-size: 2rem;
+}
+.contatos i{
+    margin-right: 1rem;
+
+}
+.contatos .contatos-secao div{
+    cursor: pointer;
+}
+.contatos .contatos-secao div:hover{
+    color: #ffc506;
+}
+footer {
+    height: 35px;
+    background-color: black;
+    color: white;
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media(max-width: 1200px)
+    .itens-cardapio{
+        width: 90%:
+    }
+
+.sobre-nos img{
+    width: 600px;
+    margin-left: -2px;
 
 }
 
+.main
