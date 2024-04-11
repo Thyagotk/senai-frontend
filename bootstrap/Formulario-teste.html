@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulário de Cadastro</title>
+  <!-- Incluindo Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Estilos CSS personalizados -->
+  <style>
+    /* Adicione seus estilos personalizados aqui */
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="container mt-5">
+    <h2>Formulário de Cadastro</h2>
+    <form id="cadastroForm">
+      <div class="form-group">
+        <label for="nome">Nome:</label>
+        <input type="text" class="form-control" id="nome" name="nome" required>
+      </div>
+      <div class="form-group">
+        <label for="email">E-mail:</label>
+        <input type="email" class="form-control" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="sexo">Sexo:</label>
+        <select class="form-control" id="sexo" name="sexo" required>
+          <option value="">Selecione</option>
+          <option value="masculino">Masculino</option>
+          <option value="feminino">Feminino</option>
+          <option value="outro">Outro</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="escolaridade">Escolaridade:</label>
+        <select class="form-control" id="escolaridade" name="escolaridade" required>
+          <option value="">Selecione</option>
+          <option value="fundamental">Fundamental</option>
+          <option value="médio">Médio</option>
+          <option value="superior">Superior</option>
+          <option value="pós-graduação">Pós-graduação</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="dataNascimento">Data de Nascimento:</label>
+        <input type="date" class="form-control" id="dataNascimento" name="dataNascimento" required>
+      </div>
+      <div class="form-group">
+        <label for="estadoCivil">Estado Civil:</label>
+        <select class="form-control" id="estadoCivil" name="estadoCivil" required>
+          <option value="">Selecione</option>
+          <option value="solteiro">Solteiro(a)</option>
+          <option value="casado">Casado(a)</option>
+          <option value="divorciado">Divorciado(a)</option>
+          <option value="viuvo">Viúvo(a)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="senha">Senha:</label>
+        <input type="password" class="form-control" id="senha" name="senha" required>
+      </div>
+      <div class="form-group">
+        <label for="confirmarSenha">Confirmar Senha:</label>
+        <input type="password" class="form-control" id="confirmarSenha" name="confirmarSenha" required>
+        <small id="senhaHelp" class="form-text text-muted">As senhas devem ser iguais.</small>
+      </div>
+      <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
+  </div>
+
+  <!-- Incluindo Bootstrap JS e jQuery (necessário para algumas funcionalidades do Bootstrap) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    // Função para validar senhas
+    function validarSenha() {
+      var senha = document.getElementById("senha").value;
+      var confirmarSenha = document.getElementById("confirmarSenha").value;
+
+      if (senha != confirmarSenha) {
+        document.getElementById("senha").classList.add("is-invalid");
+        document.getElementById("confirmarSenha").classList.add("is-invalid");
+        document.getElementById("senhaHelp").innerHTML = "As senhas não coincidem.";
+        return false;
+      } else {
+        document.getElementById("senha").classList.remove("is-invalid");
+        document.getElementById("confirmarSenha").classList.remove("is-invalid");
+        document.getElementById("senha").classList.add("is-valid");
+        document.getElementById("confirmarSenha").classList.add("is-valid");
+        document.getElementById("senhaHelp").innerHTML = "As senhas coincidem.";
+        return true;
+      }
+    }
+
+    // Evento de submissão do formulário
+    document.getElementById("cadastroForm").addEventListener("submit", function(event) {
+      // Cancela o envio do formulário se a validação da senha falhar
+      if (!validarSenha()) {
+        event.preventDefault();
+      }
+    });
+  </script>
+</body>
+</html>
