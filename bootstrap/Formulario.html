@@ -62,6 +62,7 @@
         </div>
     </div>
     <button type="submit" class="btn btn-primary float-end" id="enviar">Enviar</button>
+    <div id="dados"></div>
 </div>
 <script>
     document.querySelector("#enviar").addEventListener("click", validarform);
@@ -75,6 +76,8 @@
         ValidarInput("senha")
         ValidarInput("confirmar")
         ValidarSexo();
+        console.log(pessoa);
+        mostrarDados()
 
     }
 
@@ -84,6 +87,7 @@
         for (sx of lsSexo) {
             if (sx.checked) {
                 stSexo = true
+                pessoa.sexo = sx.value
             }
         }
         if(!stSexo) {
@@ -100,9 +104,39 @@
             item.style.border = "1px solid red";
         } else {
             item.style.border = "";
+            pessoa[iditem] = item.value
+        }
+    }
+
+        function confirmar() {
+        let item = document.getElementById("senha").value
+        let item2  = document.getElementById("confirm").value
+
+        if (item == item2) {
+            alert = ("Senha ok");
+
+        } else {
+            alert = ("Senha errada");
         }
 
     }
+
+
+    let pessoa = {};
+   
+    function mostrarDados (){
+        let txt = `
+        nome: ${pessoa.nome}<br>
+        E-mail: ${pessoa.email}<br>
+        Sexo: ${pessoa.sexo}<br>
+        dtnascimento: ${pessoa.dtnascimento}<br>
+        escolaridade: ${pessoa.escolaridade.email}<br>
+        estadocivil: ${pessoa.estadocivil.email}<br>
+        `;
+        document.querySelector("#dados").innerHTML = txt;
+
+    }
+    
 
 </script>
 </body>
