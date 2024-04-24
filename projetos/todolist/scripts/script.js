@@ -30,7 +30,7 @@ function gravar() {
             });
         }
         console.table(lsItem);
-        
+
         limparForm();
     } else {
         alert('Item e Status devem estar preenchidos')
@@ -38,12 +38,16 @@ function gravar() {
 }
 
 function ataulizarTabela() {
-    localStorage.setItem("lsItem",JSON.stringify(lsItem));
+    localStorage.setItem("lsItem", JSON.stringify(lsItem));
     let tbody = '';
     if (lsItem.length > 0) {
         let i = 0;
         for (const obj of lsItem) {
-            tbody += `<tr onclick='editar(${i})'><td class="${tpStatus[obj.status]}">${obj.item}</td></tr>`;
+            if (obj.item != "") {
+
+                tbody += `<tr onclick='editar(${i})'><td class="${tpStatus[obj.status]}">${obj.item}</td></tr>`;
+            }
+
             i++;
         }
     } else {
@@ -71,8 +75,10 @@ function apagar() {
     let indice = document.getElementById('indice').value;
     let _lineNumber = document.getElementById('_lineNumber').value;
     if (indice != "") {
-        lsItem.splice(indice, 1);
-        ataulizarTabela();
+        deleteRow(_lineNumber).then(() => {
+            lsItem.splice(indice, 1);
+            ataulizarTabela();
+        });
         limparForm();
     } else {
         alert("Necessário selecionar algum item.")
@@ -93,11 +99,11 @@ async function createRow(payload) {
     };
     */
     const response = await fetch("https://api.zerosheets.com/v1/xgm", {
-      method: "POST",
-      body: JSON.stringify(payload)
+        method: "POST",
+        body: JSON.stringify(payload)
     });
     const data = await response.json();
-  
+
     return data;
 }
 
@@ -110,11 +116,11 @@ async function patchRow(lineNumber, payload) {
     */
     const url = "https://api.zerosheets.com/v1/xgm/" + lineNumber;
     const response = await fetch(url, {
-      method: "PATCH",
-      body: JSON.stringify(payload)
+        method: "PATCH",
+        body: JSON.stringify(payload)
     });
     const data = await response.json();
-    
+
     // will return an object of the new row plus the _lineNumber
     return data;
 }
@@ -126,7 +132,7 @@ async function deleteRow(lineNumber) {
     // No response data is returned
 }
 
-getData().then( (ls) => ; {
+getData().then((ls) => {
     lsItem = ls;
     ataulizarTabela();
 });
