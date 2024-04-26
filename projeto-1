@@ -1,0 +1,27 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.error-message {
+    color: red;
+}
+document.getElementById('loginForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    var username = document.getElementById('username').value;
+    var password = document.getElementById('password').value;
+
+    if (username === 'senai' && password === 'HRT2024') {
+        window.location.href = 'gerenciador.html'; // Redireciona para o gerenciador
+    } else {
+        document.getElementById('errorMessage').innerText = 'Usuário ou senha incorretos.';
+    }
+});
