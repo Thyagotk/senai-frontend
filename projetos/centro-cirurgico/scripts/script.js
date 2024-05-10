@@ -4,19 +4,21 @@ document.getElementById('bt-novo').addEventListener('click', limparForm);
 let lista = [];
 
 let tpStatus = {
-    "Em Fila": "text-bg-info",
-    "Iniciado": "text-bg-success",
-    "Concluido": "text-bg-danger"
+    "Em operatorio": "text-bg-info",
+    "Transferido": "text-bg-success",
+    "Recuperação": "text-bg-danger"
 }
+
 
 function gravar() {
     let indice = document.getElementById('indice').value;
     let _lineNumber = document.getElementById('_lineNumber').value;
-    let item = document.getElementById('item').value;
+    let nome = document.getElementById('nome').value;
     let status = document.getElementById('status').value;
-    if (item != '' && status != '') {
+    let status = document.getElementById('local').value;
+    if (nome != '' && status != '') {
         let obj = {};
-        obj.item = item;
+        obj.nome = nome;
         obj.status = status;
         if (indice == "") {
             createRow(obj).then((o) => {
@@ -43,8 +45,10 @@ function ataulizarTabela() {
     if (lista.length > 0) {
         let i = 0;
         for (const obj of lista) {
-            if(obj.item != ""){
-                tbody += `<tr onclick='editar(${i})'><td class="${tpStatus[obj.status]}">${obj.item}</td></tr>`;
+            if(obj.nome != ""){
+                tbody += `<tr onclick='editar(${i})'>
+                <td>${obj.nome} </td>
+                <td class="${tpStatus[obj.status]}">${obj.status}</td></tr>`;
             }
             i++;
         }
@@ -57,7 +61,7 @@ function ataulizarTabela() {
 function limparForm() {
     document.getElementById('indice').value = "";
     document.getElementById('_lineNumber').value = "";
-    document.getElementById('item').value = "";
+    document.getElementById('nome').value = "";
     document.getElementById('status').value = "";
 }
 
@@ -65,7 +69,7 @@ function editar(indice) {
     obj = lista[indice];
     document.getElementById('indice').value = indice;
     document.getElementById('_lineNumber').value = obj._lineNumber;
-    document.getElementById('item').value = obj.item;
+    document.getElementById('nome').value = obj.nome;
     document.getElementById('status').value = obj.status;
 }
 
@@ -79,7 +83,7 @@ function apagar() {
         });
         limparForm();
     } else {
-        alert("Necessário selecionar algum item.")
+        alert("Necessário selecionar algum nome.")
     }
 }
 
@@ -135,5 +139,6 @@ async function deleteRow(lineNumber) {
 
 getData().then( (ls) => {
     lista = ls;
+    console.table(ls);
     ataulizarTabela();
 } );
