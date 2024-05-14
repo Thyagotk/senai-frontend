@@ -15,11 +15,12 @@ function gravar() {
     let _lineNumber = document.getElementById('_lineNumber').value;
     let nome = document.getElementById('nome').value;
     let status = document.getElementById('status').value;
-    let status = document.getElementById('local').value;
+    let local = document.getElementById('local').value;
     if (nome != '' && status != '') {
         let obj = {};
         obj.nome = nome;
         obj.status = status;
+        obj.local = local;
         if (indice == "") {
             createRow(obj).then((o) => {
                 lista.push(o);
