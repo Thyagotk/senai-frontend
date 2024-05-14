@@ -7,6 +7,11 @@ for (let i = 0; i < tamanho; i++) {
     lsEmoticons.push(lsEmoticons[i])
 }
 
+const campo= document.getElementById("campo");
+for (const buy in lsEmoticons) {
+    campo.innerHTML += `<div class="bloco"></div>` ;
+}
+
 // para cada bloco incluir o evento de click
 let blocos = {};
 let lsBloco = document.getElementsByClassName("bloco");
