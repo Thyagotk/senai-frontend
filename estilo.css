@@ -1,0 +1,48 @@
+html {
+    background-color: #141414;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    }
+    
+    body {
+    background-color: #1f1f1f;
+    padding: 30px;
+    width: 300px;
+    border-radius: 10px;
+    }
+    
+    a{
+    background-color: #333333;
+    color: white;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 45px;
+    border-radius: 5px;
+    }
+    
+    a:hover {
+    background-color: rgb(104, 50, 205);
+    color: black;
+    }
+    
+    h1 {
+    font-size: 1.9rem;
+    }
+    
+    h2 {
+    font-size: 1.2rem;
+    color: rgb(91, 50, 205);
+    }
+    
+    p {
+    font-size: 0.9rem;
+    color: rgb(73, 24, 138);
+    margin-bottom: 25px;
+    }

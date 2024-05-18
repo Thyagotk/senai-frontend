@@ -1,0 +1,68 @@
+/* Estilos para a página de administração */
+form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1em;
+}
+
+form label {
+    margin-top: 0.5em;
+}
+
+form input {
+    margin-bottom: 0.5em;
+    padding: 0.5em;
+    font-size: 1em;
+}
+
+form button {
+    padding: 0.5em;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #555;
+}
+
+.admin-product-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    justify-content: center;
+}
+
+.admin-product {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    width: 200px;
+    text-align: center;
+    position: relative;
+    padding: 1em;
+}
+
+.admin-product img {
+    width: 100%;
+    height: auto;
+}
+
+.admin-product .actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.5em;
+}
+
+.admin-product .actions button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 0.5em;
+    cursor: pointer;
+}
+
+.admin-product .actions button:hover {
+    background-color: #555;
+}
