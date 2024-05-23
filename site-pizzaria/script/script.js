@@ -6,28 +6,53 @@ menuToggle.addEventListener('click', () => {
     document.body.style.overflow = show ? 'hidden' : 'initial';
     menuContent.classList.toggle('on', show);
     show = !show;
-});
+})
 
-let intensCardapio = document.getSelection(".itens-cardapio");
-for(const p of produtos) {
-    intensCardapio.InnerHTML +=
-    div class=""
-    <img src="imagens/pngtree-cartoon-yellow-pizza-illustration-png-image_4634672-removebg-preview.png"
-            alt="">
-        <h3>PizzaShop</h3>
+let itensCardapio = document.querySelector(".itens-cardapio");
+let id= 0;
+for (const p of produtos) {
+    itensCardapio.innerHTML += `
+    <div class="">
+        <img src="${p.img}" alt="${p.dsImg}">
+        <div class="info">
+            <h3>${p.nome}</h3>
+            <h4>6 fatias<span>R$${p.fatias6}</span></h4>
+            <h4>8 fatias<span>R$${p.fatias8}</span></h4>
+            <h4>12 fatias<span>R$${p.fatias12}</span></h4>
+            <button id="id${id}"class="pedir">pedir agora</button>
+        </div>
     </div>
-    <ul class="list-menu">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#sobre-nos">Sobre Nós</a></li>
-        <li><a href="#cardapio">Cardápio</a></li>
-        <li><a href="#contatos">Contatos</a></li>
-        <li><a href=""><i class="bi bi-instagram"></i></a></li>
-        <li><a href=""><i class="bi bi-facebook"></i></a></li>
-        <li><a href=""><i class="bi bi-cart2"></i></a></li>
-    </ul>
-    <a href="#home">
-        <div class="menu-toggle">
-            <div class="one"></div>
-
-
+    `;
+    id++;
 }
+
+let telaCarrinho = document.querySelector('.tela-carrinho');
+let continuar = document.querySelector('.continuar');
+continuar.addEventListener('click', ()=>{
+    telaCarrinho.classList.toggle('ocultar-tela-carrinho');
+})
+
+let compras = document.querySelector('.compras');
+compras.addEventListener('click', ()=>{
+    telaCarrinho.classList.toggle('ocultar-tela-carrinho');
+    menuToggle.click(); // fechar o menu suspenso nas versões mobile
+})
+ let lsPedido = document.querySelectorAll('.pedir');
+ for(const bt of lsPedido){
+    bt.addEventListener('click'.() =>`{`
+        let bt.id.replace	('id','');
+        produtos[id].quantidade = 1;
+        atualizarTabela();
+        
+
+    )};
+    function atualizarTabela() {
+        for (const p of produtos)
+            if (p.quantidade > 0)((
+                console.log(p)
+            ))
+
+        
+    }
+
+ }

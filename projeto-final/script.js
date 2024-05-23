@@ -2,15 +2,15 @@ document.addEventListener('DOMContentLoaded', function () {
     const productList = document.getElementById('product-list');
 
     const products = [
-        { id: 1, name: 'Produto 1', price: 100.00, image: 'imagens/01.png' },
-        { id: 2, name: 'Produto 2', price: 150.00, image: 'imagens/02.png' },
-        { id: 3, name: 'Produto 3', price: 200.00, image: 'imagens/03.png' },
-        { id: 4, name: 'Produto 4', price: 250.00, image: 'imagens/04.png' },
-        { id: 5, name: 'Produto 5', price: 300.00, image: 'imagens/05.png' },
-        { id: 6, name: 'Produto 6', price: 350.00, image: 'imagens/06.png' },
-        { id: 7, name: 'Produto 7', price: 400.00, image: 'imagens/07.png' },
-        { id: 8, name: 'Produto 8', price: 450.00, image: 'imagens/08.png' },
-        { id: 9, name: 'Produto 9', price: 500.00, image: 'imagens/09.png' }
+        { id: 1, name: 'Banho de Mar 300g', price: 100.00, image: 'imagens/01.png' },
+        { id: 2, name: 'Passeio na Floresta 300g', price: 150.00, image: 'imagens/02.png' },
+        { id: 3, name: 'Trio Bom dia 300g', price: 200.00, image: 'imagens/03.png' },
+        { id: 4, name: 'Meus Cristais 300g', price: 250.00, image: 'imagens/04.png' },
+        { id: 5, name: 'Campo de Lavanda 300g', price: 300.00, image: 'imagens/05.png' },
+        { id: 6, name: 'Minha Rotina 300g', price: 350.00, image: 'imagens/06.png' },
+        { id: 7, name: 'Vida no Campo 300g', price: 400.00, image: 'imagens/07.png' },
+        { id: 8, name: 'Meu Momento 300g', price: 450.00, image: 'imagens/08.png' },
+        { id: 9, name: 'Flores Vivas 300g', price: 500.00, image: 'imagens/09.png' }
     ];
 
     products.forEach(product => {
