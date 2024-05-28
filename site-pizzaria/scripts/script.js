@@ -1,4 +1,3 @@
-
 let menuContent = document.querySelector('.content');
 let menuToggle = menuContent.querySelector('.menu-toggle');
 let show = true;
@@ -58,37 +57,50 @@ function atualizarTabela() {
             tbody.innerHTML += `
             <tr>
                 <td>${p.nome}</td>
-                <td>${p.quantidade}x${p.fatias8}=${p.quantidade * p.fatias8}(8 fatias)</td>
+                <td>${p.quantidade}x${p.fatias8}=R$ ${p.quantidade * p.fatias8}(8 fatias)</td>
                 <td>
-                    <i class="bi bi-plus-square-fill" id="${id}"></i>
+                    <i class="bi bi-plus-square-fill" id="plus${id}"></i>
                     <i class="bi bi-dash-square-fill" id="dash${id}"></i>
                 </td>
             </tr>`;
             total += p.quantidade * p.fatias8;
         }
-        id++;        
+        id++;
     }
     document.querySelector('#total-pedido').innerHTML = `Valor total do pedido = R$${total}`;
-
     atualizarPlusDash('plus');
     atualizarPlusDash('dash');
-
 }
 
 function atualizarPlusDash(tipo) {
     let botoes = document.querySelectorAll(`.bi-${tipo}-square-fill`);
-    for (const bt of botoes){     
+    for (const bt of botoes) {
         bt.addEventListener('click', () => {
             let id = bt.id.replace(tipo, '');
-            if (tipo == `plus`) {
+            if (tipo == 'plus') {
                 produtos[id].quantidade++;
             }
-            if (tipo == `dash`) {   
+            if (tipo == 'dash') {
                 produtos[id].quantidade--;
             }
             atualizarTabela();
         });
     }
-    
-        
 }
+
+let enviar = document.querySelector('.enviar');
+enviar.addEventListener('click', () => {
+    let msg = 'Gostaria de fazer o seguinte pedido\n';
+    let total = 0;
+    for (const p of produtos) {
+        if (p.quantidade > 0) {
+            msg += `${p.nome} ${p.quantidade}x${p.fatias8}=${p.quantidade * p.fatias8}\n`;
+            total += p.quantidade * p.fatias8;
+        }
+    }
+    msg += `Total = ${total}`;
+    msg = encodeURI(msg);
+    let fone = '5561';
+    let link = `https://api.whatsapp.com/send?phone=${fone}&text=${msg}`;
+    window.open(link);
+});
