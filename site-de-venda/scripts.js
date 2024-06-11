@@ -1,6 +1,7 @@
 let menuContent = document.querySelector('.content');
 let menuToggle = menuContent.querySelector('.menu-toggle');
 let show = true;
+
 menuToggle.addEventListener('click', () =>{
     document.body.style.overflow = show ? 'hidden' : 'initial';
     menuContent.classList.toggle('on', show);
@@ -8,7 +9,7 @@ menuToggle.addEventListener('click', () =>{
 })
 let itensLançamento = document.querySelector(".itens-lançamento");
 let id = 0;
-for (const p of produtos) {
+for (const p of lançamento) {
     itensLançamento.innerHTML += `
     <div class="">
         <img src="${p.img}" alt="${p.dsImg}">
@@ -35,7 +36,13 @@ let lsPedido = document.querySelectorAll('.pedir');
 for (const bt of lsPedido) {
     bt.addEventListener('click', ()=>{
         let id = bt.id.replace('id','');
+        if(bt.innerHTML == 'REMOVER'){
+        produtos[id].quantidade = 0;
+        bt.innerHTML = 'pedir agora';
+    }else{
         produtos[id].quantidade = 1;
+        bt.innerHTML = 'REMOVER';
+    }
         atualizarTabela();
     });
 }
@@ -49,14 +56,13 @@ function atualizarTabela() {
             tbody.innerHTML += `
                         <tr>
                         <td>${p.nome}</td>
-                        <td>${p.quantidade}x${p.velas}=${p.quantidade*p.sapato}(38 ao 43)</td>
-                        <td>
+                        <td>${p.quantidade}x${p.valor}=${p.quantidade*p.valor}
+                        </td>                        <td>
                             <i class="bi bi-plus-square-fill" id="plus${id}"></i>
                             <i class="bi bi-dash-square-fill" id="dash${id}"></i>
                         </td>
                     </tr>`;
-        total += p.quantidade*p.sapato;
-            
+                    total += p.quantidade*p.valor;            
         }
         id++;
     }
@@ -73,10 +79,13 @@ function atualizarPlusDash(tipo){
                 produtos[id].quantidade ++;               
             }
             if(tipo == 'dash'){
-                produtos[id].quantidade --;
+                produtos[id].quantidade--;
+                if(produtos[id].quantidade < 1){
+                    document.getElementById('id' +id).click();
             }
+        }
             atualizarTabela();
-        })
+        });
         
     }
 
