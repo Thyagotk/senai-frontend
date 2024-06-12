@@ -3,7 +3,7 @@ let menuToggle = menuContent.querySelector('.menu-toggle');
 let show = true;
 
 menuToggle.addEventListener('click', () =>{
-    document.body.style.overflow = show ? 'hidden' : 'initial';
+    document.body.style.overflow = show ? 'hidden' : 'intial';
     menuContent.classList.toggle('on', show);
     show = !show;
 })
@@ -15,13 +15,14 @@ for (const p of lançamento) {
         <img src="${p.img}" alt="${p.dsImg}">
         <div class="info">
             <h3>${p.nome}</h3>
-            <h4>38 ao 43<span>R$${p.velas}</span></h4>
+            <h4><span>R$${p.velas}</span></h4>
             <button id="id${id}" class="pedir">pedir agora</button>
         </div>
     </div>
     `;
     id++;
 }
+
 let telaCarrinho = document.querySelector('.tela-carrinho');
 let continuar = document.querySelector('.continuar');
 continuar.addEventListener('click',()=>{
@@ -37,10 +38,11 @@ for (const bt of lsPedido) {
     bt.addEventListener('click', ()=>{
         let id = bt.id.replace('id','');
         if(bt.innerHTML == 'REMOVER'){
-        produtos[id].quantidade = 0;
+        lançamento[id].quantidade = 0;
         bt.innerHTML = 'pedir agora';
     }else{
-        produtos[id].quantidade = 1;
+
+        lançamento[id].quantidade = 1;
         bt.innerHTML = 'REMOVER';
     }
         atualizarTabela();
@@ -51,7 +53,7 @@ function atualizarTabela() {
     tbody.innerHTML = '';
     let total = 0;
     let id = 0;
-    for (const p of produtos) {
+    for (const p of lançamento) {
         if (p.quantidade > 0) {
             tbody.innerHTML += `
                         <tr>
@@ -76,11 +78,11 @@ function atualizarPlusDash(tipo){
         bt.addEventListener('click', () =>{
             let id = bt.id.replace(tipo, '');
             if(tipo == 'plus'){
-                produtos[id].quantidade ++;               
+                lançamento[id].quantidade ++;               
             }
             if(tipo == 'dash'){
-                produtos[id].quantidade--;
-                if(produtos[id].quantidade < 1){
+                lançamento[id].quantidade--;
+                if(lançamento[id].quantidade < 1){
                     document.getElementById('id' +id).click();
             }
         }
@@ -95,16 +97,16 @@ let enviar = document.querySelector('.enviar');
 enviar.addEventListener("click", ()=>{
     let msg = 'Gostaria de fazer o seguinte pedido\n';
     let total = 0;
-       for (const p of produtos) {
+       for (const p of lançamento) {
         if (p.quantidade > 0) {
-            msg += `${p.nome} ${p.quantidade}x${p.velas}=${p.quantidade*p.velas}\n`;
+            msg += `${p.nome} ${p.quantidade}x${p.velas}=${p.quantidade*p.valor}\n`;
         total += p.quantidade * p.velas;
 
         }
       }
       msg += `Total = ${total}`;
       msg = encodeURI(msg);
-      let fone = '556192530371';
+      let fone = '556140028922';
       let link = `https://api.whatsapp.com/send?phone=${fone}&text=${msg}`;
       window.open(link);
 
